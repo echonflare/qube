@@ -1,0 +1,26 @@
+def average_price(prices, n):
+    """
+    Returns the average price over the last n days.
+
+    :param prices: List of prices (each element is the price for a day, sorted by date in ascending order).
+    :param n: Number of last days to calculate the average price.
+    :return: Average price over the last n days.
+    """
+    if not prices or n <= 0:
+        raise ValueError("Prices list must not be empty and n must be greater than 0.")
+    
+    if n > len(prices):
+        raise ValueError("n must not be greater than the length of the prices list.")
+    
+    # Take the last n prices
+    recent_prices = prices[-n:]
+    
+    # Calculate the average price
+    average = sum(recent_prices) / n
+    
+    return average
+
+# Example usage:
+prices = [100, 102, 105, 103, 107, 110, 115]  # Example array of prices by date
+n = 3  # Number of last days
+print(average_price(prices, n))  # Output: 110.66666666666667
